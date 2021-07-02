@@ -1,4 +1,3 @@
-import express from 'express';
 import {resolve} from 'path';
 
 export const initControllers = () => {
