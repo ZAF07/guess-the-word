@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "webpack --config=config/webpack.config.js",
     "watch": "webpack --watch --config=config/webpack.config.js",
-    "serve": "webpack serve --config=config/webpack.config.js"
+    "serve": "webpack serve --config=config/webpack.config.js",
+    "server": "nodemon ./server/index.mjs"
   },
   "author": "zaffere",
   "license": "ISC",

@@ -3,11 +3,11 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: {
-    main: '/public/src/index.js'
+    main: '/client/public/src/index.js'
   },
   output: {
     filename: '[name]-[contenthash].bundle.js',
-    path: path.resolve(__dirname, '../public/dist')
+    path: path.resolve(__dirname, '../client/public/dist')
   },
 
   mode: 'development',
@@ -40,6 +40,6 @@ module.exports = {
   },
     plugins: [new HtmlWebpackPlugin({
     title: 'Jumbled Words Game',
-    template: path.resolve('/public/src/index.html') 
+    template: path.resolve('/client/public/src/index.html') 
   })],
 }
