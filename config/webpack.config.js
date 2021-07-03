@@ -20,7 +20,8 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env']
+            presets: ['@babel/preset-env'],
+           plugins: ['@babel/plugin-transform-runtime']
           }
         }
       },
@@ -41,5 +42,6 @@ module.exports = {
     plugins: [new HtmlWebpackPlugin({
     title: 'Jumbled Words Game',
     template: path.resolve('/client/public/src/index.html') 
-  })],
+  })
+],
 }

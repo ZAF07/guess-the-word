@@ -2,7 +2,8 @@ import express from 'express';
 import {initControllers} from '../controllers/index.mjs';
 
 export const router = express.Router();
-const gameRoute = initControllers();
+const  gameController = initControllers();
 
 
-router.get('/', gameRoute.game)
+router.get('/', gameController.game);
+router.get('/words', gameController.getWords);
