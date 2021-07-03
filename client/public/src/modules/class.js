@@ -21,9 +21,9 @@ export class Player {
     this.score += 3;
   }
 
-  setWrongGuess(selectors) {
+  setWrongGuess() {
     this.score -= 1;
-    selectors.score.innerText = this.score;
+    // selectors.score.innerText = this.score;
     console.log(`${this.player} wrong guess: Score: ${this.score}`);
   }
 
@@ -37,6 +37,7 @@ export class Game {
     this.rounds = 0;
     this.gameStart = false;
     this.fullWord = null;
+    this.wrongGuessInRow = 0;
   }
 
   updateRounds() {
@@ -62,10 +63,10 @@ export class Game {
   //   selectors.roundsDisplay.innerText = `Round ${Number(this.rounds) + 1}`;
   // }
 
-  async init(selectors, getWords) {
+  async init(getWords) {
     this.fullWord = await getWords();
     console.log('Game: ', this.fullWord);
     // player = new Player(name)
-    selectors.wordToGuess.innerText = this.fullWord[this.rounds];
+    // selectors.wordToGuess.innerText = this.fullWord[this.rounds];
   }
 }

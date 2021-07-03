@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-expressions */
+/* eslint-disable max-len */
 /* eslint-disable no-alert */
 /* eslint-disable no-console */
 /* eslint-disable max-classes-per-file */
@@ -47,12 +49,13 @@ let CurrentPlayer;
 let CurrentGame;
 
 // Event handler for creating a new game
-selectors.newGameBtn.addEventListener('click', () => {
+selectors.newGameBtn.addEventListener('click', async () => {
   // creates a new player object
   CurrentPlayer = new Player(selectors.username.value);
   CurrentGame = new Game();
-  CurrentGame.init(selectors, getWords);
-  // selectors.wordToGuess.innerText = CurrentGame.fullWord[CurrentGame.rounds];
+  // await CurrentGame.init(getWords);
+  CurrentGame.fullWord = await getWords();
+  selectors.wordToGuess.innerText = CurrentGame.fullWord[CurrentGame.rounds];
 });
 
 // Event handler for when user submits guessed word
@@ -74,81 +77,13 @@ selectors.playerInput.addEventListener('keyup', (event) => {
       // Update the word to guess displayed on screen
       selectors.wordToGuess.innerText = CurrentGame.fullWord[CurrentGame.rounds];
       selectors.playerInput.value = '';
-    } else {
-      selectors.playerInput.value = '';
-      // Subtract a point from player score
-      CurrentPlayer.setWrongGuess(selectors);
+      return;
     }
+    CurrentGame.wrongGuessInRow += 1;
+
+    // Subtract a point from player score based on number of consecutive misses
+    CurrentGame.wrongGuessInRow === 3 ? CurrentPlayer.setThreeWrongGuesses() : CurrentPlayer.setWrongGuess();
+    selectors.playerInput.value = '';
+    selectors.score.innerText = CurrentPlayer.score;
   }
 });
-
-// export class Player {
-//   constructor(player) {
-//     this.player = player;
-//     this.score = 0;
-//   }
-
-//   setCorrectGuess() {
-//     this.score += 1;
-//     selectors.score.innerText = this.score;
-//     console.log(`${this.player} correct guess: Score: ${this.score}`);
-//   }
-
-//   setThreeCorrectGuesses() {
-//     this.score += 3;
-//   }
-
-//   setWrongGuess() {
-//     this.score -= 1;
-//     selectors.score.innerText = this.score;
-//     console.log(`${this.player} wrong guess: Score: ${this.score}`);
-//   }
-
-//   setThreeWrongGuesses() {
-//     this.score -= 3;
-//   }
-// }
-
-// export class Game {
-//   constructor() {
-//     this.rounds = 0;
-//     this.gameStart = false;
-//     this.fullWord = null;
-//   }
-
-//   updateRounds() {
-//     this.rounds += 1;
-//   }
-
-//   gameLogic(playerInputValue, playerClass, event) {
-//     if (event.keyCode === 13) {
-//       if (playerInputValue === this.fullWord[this.rounds]) {
-//         // this.gameScore ++
-//         playerClass.setCorrectGuess();
-//         this.updateWord();
-//       } else {
-//         selectors.playerInput.value = '';
-//         //  gameScore -= 1
-//         playerClass.setWrongGuess();
-//       }
-//     }
-//     selectors.roundsDisplay.innerText = `Round ${Number(this.rounds) + 1}`;
-//   }
-
-//   updateWord() {
-//     if (this.rounds === this.fullWord.length - 1) {
-//       alert('Game Over');
-//       window.location.reload();
-//     }
-//     this.rounds += 1;
-//     selectors.wordToGuess.innerText = this.fullWord[this.rounds];
-//     selectors.playerInput.value = '';
-//   }
-
-//   async init() {
-//     this.fullWord = await getWords();
-//     console.log('Game: ', this.fullWord);
-//     // player = new Player(name)
-//     selectors.wordToGuess.innerText = this.fullWord[this.rounds];
-//   }
-// }
