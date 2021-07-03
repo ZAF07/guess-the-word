@@ -1,5 +1,5 @@
 /* eslint-disable import/no-cycle */
-import * as controller from '../index';
+// import * as controller from '../index';
 
 const selectors = {
   wordToGuess: document.getElementById('guess-word'),
@@ -11,18 +11,20 @@ const selectors = {
   roundsDisplay: document.querySelector('.rounds-display'),
 };
 
-let player;
-let game;
+// let player;
+// let game;
 
-selectors.newGameBtn.addEventListener('click', (e) => {
-  // creates a new player object
-  player = new controller.Player(selectors.username.value);
-  game = new controller.Game();
-  game.init();
-});
+// selectors.newGameBtn.addEventListener('click', (e) => {
+//   // creates a new player object
 
-selectors.playerInput.addEventListener('keyup', (event) => {
-  game.gameLogic(selectors.playerInput.value, player, event);
-});
+//   player = new controller.Player(selectors.username.value);
+//   game = new controller.Game();
+//   game.init();
+// });
+
+// selectors.playerInput.addEventListener('keyup', (event) => {
+//   const playerGuessInput = selectors.playerInput.value;
+//   game.gameLogic(playerGuessInput, player, event);
+// });
 
 export default selectors;

@@ -1,18 +1,21 @@
-import {resolve} from 'path';
-import {words} from '../utils/game.mjs';
+/* eslint-disable import/extensions */
+import { resolve } from 'path';
+import { words } from '../utils/game.mjs';
 
-export const initControllers = () => {
+const initControllers = () => {
   const game = (req, res) => {
-    res.sendFile(resolve('client/dist', 'index.html'))
-  }
+    res.sendFile(resolve('client/dist', 'index.html'));
+  };
 
   // Endpoint for retrieving all words for game
-  const getWords = (req,res) => {
+  const getWords = (req, res) => {
     res.json(words);
-  }
+  };
 
   return {
     game,
-    getWords
-  }
-}
+    getWords,
+  };
+};
+
+export default initControllers;

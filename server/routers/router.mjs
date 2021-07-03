@@ -1,9 +1,11 @@
+/* eslint-disable import/extensions */
 import express from 'express';
-import {initControllers} from '../controllers/index.mjs';
+import initControllers from '../controllers/index.mjs';
 
-export const router = express.Router();
-const  gameController = initControllers();
-
+const router = express.Router();
+const gameController = initControllers();
 
 router.get('/', gameController.game);
 router.get('/words', gameController.getWords);
+
+export default router;
