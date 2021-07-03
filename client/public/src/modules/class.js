@@ -38,6 +38,7 @@ export class Game {
     this.gameStart = false;
     this.fullWord = null;
     this.wrongGuessInRow = 0;
+    this.correctGuessInRow = 0;
   }
 
   updateRounds() {

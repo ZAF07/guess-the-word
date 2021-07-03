@@ -48,6 +48,7 @@ import { Game, Player } from './modules/class';
 let CurrentPlayer;
 let CurrentGame;
 
+//                ********************** GAME STARTS HERE ***********************
 // Event handler for creating a new game
 selectors.newGameBtn.addEventListener('click', async () => {
   // creates a new player object
@@ -60,17 +61,27 @@ selectors.newGameBtn.addEventListener('click', async () => {
 
 // Event handler for when user submits guessed word
 selectors.playerInput.addEventListener('keyup', (event) => {
-  // const playerGuessInput = selectors.playerInput.value;
-  // game.gameLogic(playerGuessInput, player, event);
   // On enter key after player input word guess
   if (event.keyCode === 13) {
     // If player word matches word to guess
     if (selectors.playerInput.value === CurrentGame.fullWord[CurrentGame.rounds]) {
       // this.gameScore ++
-      // Add score to player class
-      CurrentPlayer.setCorrectGuess(selectors);
+      // Reset loosing streak
+      CurrentGame.wrongGuessInRow = 0;
+      // Add to wining streak
+      CurrentGame.correctGuessInRow += 1;
+
+      // Add score to player class based on number of streak
+      // CurrentGame.correctGuessInRow % 3 === 0 ? CurrentPlayer.setThreeCorrectGuesses() : CurrentPlayer.setCorrectGuess();
+
+      if (CurrentGame.correctGuessInRow === 3) {
+        CurrentPlayer.setThreeCorrectGuesses();
+      }
+      CurrentPlayer.setCorrectGuess();
+
       // Update player score on screen
       selectors.score.innerText = CurrentPlayer.score;
+
       // Update round of game
       // (also being used as index to iterate through fullWord array to display word)
       CurrentGame.updateRounds();
@@ -79,10 +90,19 @@ selectors.playerInput.addEventListener('keyup', (event) => {
       selectors.playerInput.value = '';
       return;
     }
+    // Player input no match with word
+    // Reset streak
+    CurrentGame.correctGuessInRow = 0;
+    // Add to losing streak
     CurrentGame.wrongGuessInRow += 1;
 
     // Subtract a point from player score based on number of consecutive misses
-    CurrentGame.wrongGuessInRow === 3 ? CurrentPlayer.setThreeWrongGuesses() : CurrentPlayer.setWrongGuess();
+    // CurrentGame.wrongGuessInRow === 3 ? CurrentPlayer.setThreeWrongGuesses() : CurrentPlayer.setWrongGuess();
+    if (CurrentGame.wrongGuessInRow === 3) {
+      CurrentPlayer.setThreeWrongGuesses();
+    }
+    CurrentPlayer.setWrongGuess();
+
     selectors.playerInput.value = '';
     selectors.score.innerText = CurrentPlayer.score;
   }
