@@ -2,6 +2,7 @@
 /* eslint-disable no-console */
 import express from 'express';
 import router from './routers/router.mjs';
+import {} from 'dotenv/config';
 
 const app = express();
 

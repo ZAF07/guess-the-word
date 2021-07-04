@@ -4,24 +4,25 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --config=config/webpack.config.js",
-    "watch": "webpack --watch --config=config/webpack.config.js",
-    "serve": "webpack serve --config=config/webpack.config.js",
+    "build": "webpack --config=client/config/webpack.config.js",
+    "watch": "webpack --watch --config=client/config/webpack.config.js",
+    "serve": "webpack serve --config=client/config/webpack.config.js",
     "server": "nodemon ./server/index.mjs"
   },
   "author": "zaffere",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.21.1",
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "pg": "^8.6.0",
     "sequelize": "^6.6.4",
-    "axios": "^0.21.1"
+    "sequelize-cli": "^6.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.14.6",
     "@babel/plugin-transform-runtime": "^7.14.5",
     "@babel/preset-env": "^7.14.7",
-    "axios": "^0.21.1",
     "babel-eslint": "8.2.1",
     "babel-loader": "^8.2.2",
     "css-loader": "^5.2.6",
