@@ -3,11 +3,12 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: {
-    main: '/client/public/src/index.js'
+    main: '/client/public/src/index.js',
   },
   output: {
     filename: '[name]-[contenthash].bundle.js',
-    path: path.resolve(__dirname, '../client/public/dist')
+    // path: path.resolve(__dirname, '../client/public/dist'),
+    path: path.resolve(__dirname, '../public/dist'),
   },
 
   mode: 'development',
@@ -21,27 +22,27 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             presets: ['@babel/preset-env'],
-           plugins: ['@babel/plugin-transform-runtime']
-          }
-        }
+            plugins: ['@babel/plugin-transform-runtime'],
+          },
+        },
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader']
+        use: ['style-loader', 'css-loader'],
       },
-       {
-         test: /\.(png|jpe?g|gif)$/i,
-         use: [
-           {
-             loader: 'file-loader',
-           }
-         ]
-       }
-    ]
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+          },
+        ],
+      },
+    ],
   },
-    plugins: [new HtmlWebpackPlugin({
+  plugins: [new HtmlWebpackPlugin({
     title: 'Jumbled Words Game',
-    template: path.resolve('/client/public/src/index.html') 
-  })
-],
-}
+    template: path.resolve('/client/public/src/index.html'),
+  }),
+  ],
+};

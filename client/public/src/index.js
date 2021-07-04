@@ -42,7 +42,7 @@ Check loose 3 in row -> minus 3 points
 */
 
 import selectors from './modules/view';
-import getWords from './modules/api';
+import { getWords, setNewPlayer } from './modules/api';
 import { Game, Player } from './modules/class';
 
 let CurrentPlayer;
@@ -51,10 +51,12 @@ let CurrentGame;
 //                ********************** GAME STARTS HERE ***********************
 // Event handler for creating a new game
 selectors.newGameBtn.addEventListener('click', async () => {
+  // setNewPlayer();
+  console.log('click');
   // creates a new player object
-  CurrentPlayer = new Player(selectors.username.value);
+  // CurrentPlayer = new Player(selectors.username.value);
+  CurrentPlayer = new Player(await setNewPlayer());
   CurrentGame = new Game();
-  // await CurrentGame.init(getWords);
   CurrentGame.fullWord = await getWords();
   selectors.wordToGuess.innerText = CurrentGame.fullWord[CurrentGame.rounds];
 });

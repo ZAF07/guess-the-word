@@ -64,10 +64,10 @@ export class Game {
   //   selectors.roundsDisplay.innerText = `Round ${Number(this.rounds) + 1}`;
   // }
 
-  async init(getWords) {
-    this.fullWord = await getWords();
-    console.log('Game: ', this.fullWord);
-    // player = new Player(name)
-    // selectors.wordToGuess.innerText = this.fullWord[this.rounds];
-  }
+  // async init(getWords) {
+  //   this.fullWord = await getWords();
+  //   console.log('Game: ', this.fullWord);
+  //   // player = new Player(name)
+  //   // selectors.wordToGuess.innerText = this.fullWord[this.rounds];
+  // }
 }

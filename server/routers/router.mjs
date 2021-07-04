@@ -7,5 +7,5 @@ const gameController = initControllers();
 
 router.get('/', gameController.game);
 router.get('/words', gameController.getWords);
-
+router.post('/new-player', gameController.setNewPlayer);
 export default router;
