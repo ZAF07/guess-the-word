@@ -1,6 +1,7 @@
 /* eslint-disable import/extensions */
 import { resolve } from 'path';
 import { words } from '../utils/game.mjs';
+import * as auth from '../utils/auth.mjs';
 import db from '../model/models/index.mjs';
 
 const initControllers = () => {
@@ -14,11 +15,34 @@ const initControllers = () => {
   };
 
   const setNewPlayer = async (req, res) => {
-    // Check if user exists
-    // If not, create new else retrieve player info
-    const { dataValues } = await db.User.create({ name: 'zaffere' });
-    res.json(dataValues);
-    res.end();
+    const { userName, password } = req.body;
+    console.log('This is name and password controller --> ', userName, password);
+    try {
+      // Check if user exists
+      const existingUser = await db.User.findAll({
+        where: {
+          name: userName,
+        },
+      });
+
+      if (!existingUser.length) {
+        // If not, create new else retrieve player info
+
+        const hashedPassword = auth.hashPassword(password);
+
+        const { dataValues } = await db.User.create({
+          name: userName,
+          password: hashedPassword,
+        });
+        res.json(dataValues);
+        // res.end();
+        return;
+      }
+
+      res.json(existingUser);
+    } catch (error) {
+      console.log('CONTROLLER setNewPlayer ERROR --> ', error);
+    }
   };
 
   return {

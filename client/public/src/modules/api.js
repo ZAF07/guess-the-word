@@ -13,11 +13,12 @@ const getWords = async () => {
   return words;
 };
 
-const setNewPlayer = async () => {
+const setNewPlayer = async (userName, password) => {
+  console.log(userName, password);
   let name;
   console.log('setnewplaye');
   try {
-    const { data } = await axios.post('/new-player');
+    const { data } = await axios.post('/new-player', { userName, password });
     console.log('returned data db', data);
     name = data.name;
   } catch (error) {

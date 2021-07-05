@@ -7,6 +7,7 @@ export default function userModel(sequelize, DataTypes) {
       primaryKey: true,
     },
     name: DataTypes.STRING,
+    password: DataTypes.STRING,
     createdAt: {
       type: DataTypes.DATE,
     },

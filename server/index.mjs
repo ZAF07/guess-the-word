@@ -8,6 +8,7 @@ const app = express();
 
 app.use(express.static('client/public'));
 app.use(express.static('client/public/dist'));
+app.use(express.json());
 
 app.use('/', router);
 

@@ -9,6 +9,11 @@ const selectors = {
   username: document.getElementById('username'),
   newGameBtn: document.getElementById('newGame-btn'),
   roundsDisplay: document.querySelector('.rounds-display'),
+  gamePage: document.querySelector('.game-page'),
+  homePage: document.querySelector('.home-page'),
+  password: document.getElementById('password'),
+  userName: document.getElementById('username'),
+
 };
 
 // let player;

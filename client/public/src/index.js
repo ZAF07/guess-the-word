@@ -40,7 +40,7 @@ Check loose 3 in row -> minus 3 points
  Player can click solve button
 
 */
-
+import './recources/styles/styles.css';
 import selectors from './modules/view';
 import { getWords, setNewPlayer } from './modules/api';
 import { Game, Player } from './modules/class';
@@ -50,12 +50,21 @@ let CurrentGame;
 
 //                ********************** GAME STARTS HERE ***********************
 // Event handler for creating a new game
-selectors.newGameBtn.addEventListener('click', async () => {
+selectors.newGameBtn.addEventListener('click', async (e) => {
+  e.preventDefault();
+
+  // Player info
+  const userName = selectors.username.value;
+  const password = selectors.password.value;
+
+  // Make game page visible
+  selectors.gamePage.style.display = 'block';
+  selectors.homePage.style.display = 'none';
   // setNewPlayer();
   console.log('click');
   // creates a new player object
   // CurrentPlayer = new Player(selectors.username.value);
-  CurrentPlayer = new Player(await setNewPlayer());
+  CurrentPlayer = new Player(await setNewPlayer(userName, password));
   CurrentGame = new Game();
   CurrentGame.fullWord = await getWords();
   selectors.wordToGuess.innerText = CurrentGame.fullWord[CurrentGame.rounds];

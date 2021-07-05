@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 import sequelizePackage from 'sequelize';
 import allConfig from '../config/config.js';
 
