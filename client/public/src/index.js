@@ -44,6 +44,7 @@ import './recources/styles/styles.css';
 import selectors from './modules/view';
 import { getWords, setNewPlayer } from './modules/api';
 import { Game, Player } from './modules/class';
+import Timer from './modules/timer';
 
 let CurrentPlayer;
 let CurrentGame;
@@ -68,6 +69,7 @@ selectors.newGameBtn.addEventListener('click', async (e) => {
   CurrentGame = new Game();
   CurrentGame.fullWord = await getWords();
   selectors.wordToGuess.innerText = CurrentGame.fullWord[CurrentGame.rounds];
+  Timer(selectors.showMinute, selectors.showSeconds);
 });
 
 // Event handler for when user submits guessed word

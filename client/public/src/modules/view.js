@@ -13,6 +13,9 @@ const selectors = {
   homePage: document.querySelector('.home-page'),
   password: document.getElementById('password'),
   userName: document.getElementById('username'),
+  showHour: document.getElementById('show-hour'),
+  showMinute: document.getElementById('show-minute'),
+  showSeconds: document.getElementById('show-seconds'),
 
 };
 
