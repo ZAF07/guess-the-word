@@ -34,8 +34,8 @@ const initControllers = () => {
           name: userName,
           password: hashedPassword,
         });
-        res.json(dataValues);
-        // res.end();
+        res.json(dataValues.name);
+        res.end();
         return;
       }
 

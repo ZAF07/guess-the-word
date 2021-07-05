@@ -20,7 +20,7 @@ const setNewPlayer = async (userName, password) => {
   try {
     const { data } = await axios.post('/new-player', { userName, password });
     console.log('returned data db', data);
-    name = data.name;
+    name = data;
   } catch (error) {
     console.log(error);
   }
