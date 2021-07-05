@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+/* eslint-disable no-param-reassign */
 const startTimer = (minutes, seconds) => {
   let minute = 3;
   let second = 0;
