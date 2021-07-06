@@ -16,7 +16,13 @@ const startTimer = (minutes, seconds, selectors) => {
     } else if (minute === 0 && second === 0) {
       selectors.homePage.style.display = 'block';
       selectors.gamePage.style.display = 'none';
+      selectors.gameSubHeader.style.display = 'none';
       selectors.endGame.style.display = 'block';
+      selectors.reset.style.display = 'block';
+      selectors.timer.style.display = 'none';
+      selectors.score.innerText = '';
+      selectors.wordToGuess.innerText = '';
+
       // hours += 1;
       // minutes = 0;
       // showMsgFunc('Game about to end timer message', 'red');

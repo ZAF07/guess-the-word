@@ -18,6 +18,9 @@ const selectors = {
   showSeconds: document.getElementById('show-seconds'),
   signIn: document.getElementById('sign-in-btn'),
   endGame: document.getElementById('end-game'),
+  gameSubHeader: document.getElementById('game-subheader'),
+  reset: document.getElementById('reset'),
+  timer: document.getElementById('timer'),
 };
 
 // let player;

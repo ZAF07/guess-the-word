@@ -53,7 +53,7 @@ let CurrentGame;
 
 // Creating new player for DB
 selectors.signIn.addEventListener('click', async (e) => {
-  selectors.newGameBtn.style.display = 'none';
+  selectors.newGameBtn.style.visibility = 'hidden';
   selectors.homePage.style.display = 'none';
   // Player info
   const userName = selectors.username.value;
@@ -64,19 +64,14 @@ selectors.signIn.addEventListener('click', async (e) => {
   CurrentGame.fullWord = await getWords();
   selectors.wordToGuess.innerText = CurrentGame.fullWord[CurrentGame.rounds];
   Timer(selectors.showMinute, selectors.showSeconds, selectors);
+  selectors.timer.style.display = 'block';
 });
 
 // Event handler for creating a new game
 selectors.newGameBtn.addEventListener('click', async (e) => {
   e.preventDefault();
 
-  // // Player info
-  // const userName = selectors.username.value;
-  // const password = selectors.password.value;
-
-  // Make game page visible
-  // selectors.gamePage.style.display = 'block';
-  selectors.newGameBtn.style.display = 'none';
+  selectors.newGameBtn.style.visibility = 'hidden';
   selectors.homePage.style.display = 'none';
   // setNewPlayer();
   console.log('click');
@@ -89,7 +84,8 @@ selectors.newGameBtn.addEventListener('click', async (e) => {
   CurrentGame = new Game();
   CurrentGame.fullWord = await getWords();
   selectors.wordToGuess.innerText = CurrentGame.fullWord[CurrentGame.rounds];
-  Timer(selectors.showMinute, selectors.showSeconds);
+  Timer(selectors.showMinute, selectors.showSeconds, selectors);
+  selectors.timer.style.display = 'block';
 });
 
 // Event handler for when user submits guessed word
@@ -109,8 +105,9 @@ selectors.playerInput.addEventListener('keyup', (event) => {
 
       if (CurrentGame.correctGuessInRow === 3) {
         CurrentPlayer.setThreeCorrectGuesses();
+      } else {
+        CurrentPlayer.setCorrectGuess();
       }
-      CurrentPlayer.setCorrectGuess();
 
       // Update player score on screen
       selectors.score.innerText = CurrentPlayer.score;
@@ -133,10 +130,20 @@ selectors.playerInput.addEventListener('keyup', (event) => {
     // CurrentGame.wrongGuessInRow === 3 ? CurrentPlayer.setThreeWrongGuesses() : CurrentPlayer.setWrongGuess();
     if (CurrentGame.wrongGuessInRow === 3) {
       CurrentPlayer.setThreeWrongGuesses();
+    } else {
+      CurrentPlayer.setWrongGuess();
     }
-    CurrentPlayer.setWrongGuess();
 
     selectors.playerInput.value = '';
     selectors.score.innerText = CurrentPlayer.score;
   }
+});
+
+selectors.reset.addEventListener('click', () => {
+  selectors.homePage.style.display = 'block';
+  selectors.gamePage.style.display = 'block';
+  selectors.gameSubHeader.style.display = 'block';
+  selectors.newGameBtn.style.visibility = 'visible';
+  selectors.endGame.style.display = 'none';
+  selectors.reset.style.display = 'none';
 });

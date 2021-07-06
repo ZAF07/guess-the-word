@@ -4,9 +4,11 @@
   box-sizing: border-box;
 }
 
-/* .game-page {
+#end-game,
+#reset,
+#timer {
   display: none;
-} */
+}
 
 input {
   border-top-style: hidden;
