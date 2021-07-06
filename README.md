@@ -1,3 +1,4 @@
+
 # Scrambled Words Game
 
 Personal Project
@@ -11,3 +12,6 @@ A word game where players are given a certain amount of time to solve as many sc
 <br>
 <br>
 <br>
+
+
+![Blank diagram (2)](https://user-images.githubusercontent.com/61228520/124489036-226fd080-dde3-11eb-871a-ccd2eae46443.png)
