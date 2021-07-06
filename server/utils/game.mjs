@@ -1,4 +1,3 @@
-const words = ['box', 'car', 'cup', 'pen','word', 'jars', 'hand', 'game', 'same', 'sane', 'next', 'three', 'click', 'camera'];
+const words = ['box', 'car', 'cup', 'pen', 'word', 'jars', 'hand', 'game', 'same', 'sane', 'next', 'three', 'click', 'camera', 'Seven', 'world', 'about', 'again', 'heart', 'angel', 'death', 'month', 'party', 'lucid', 'cliff', 'almost', 'stars', 'irony', 'hardy', 'start', 'tough', 'built', 'barren', 'handy', 'lover', 'keeps', 'solid', 'fresh', 'state', 'creamy', 'strength', 'styles', 'export', 'sudden', 'finder', 'rhymes', 'create', 'belief', 'barren', 'letter', 'mentor', 'number', 'ponies', 'router', 'planet', 'jokers', 'client', 'lighter', 'folders', 'defines', 'sentence', 'starting'];
 
-
-export {words}
+export default words;

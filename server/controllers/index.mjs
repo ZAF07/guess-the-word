@@ -1,6 +1,6 @@
 /* eslint-disable import/extensions */
 import { resolve } from 'path';
-import { words } from '../utils/game.mjs';
+import words from '../utils/game.mjs';
 import * as auth from '../utils/auth.mjs';
 import db from '../model/models/index.mjs';
 
