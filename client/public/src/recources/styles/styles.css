@@ -15,3 +15,6 @@ input {
   border-bottom-style: groove;
   background-color: #fff;
 }
+input:focus {
+  outline: none;
+}
