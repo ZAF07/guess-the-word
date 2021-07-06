@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 /* eslint-disable no-param-reassign */
-const startTimer = (minutes, seconds) => {
-  let minute = 3;
+const startTimer = (minutes, seconds, selectors) => {
+  let minute = 1;
   let second = 0;
   const toStartTimer = setInterval(() => {
     minutes.innerText = minute;
@@ -14,6 +14,9 @@ const startTimer = (minutes, seconds) => {
       console.log('second ', minute);
       // IF MINUTES == 60 ? HOURS === +=1 MINUTES === 0
     } else if (minute === 0 && second === 0) {
+      selectors.homePage.style.display = 'block';
+      selectors.gamePage.style.display = 'none';
+      selectors.endGame.style.display = 'block';
       // hours += 1;
       // minutes = 0;
       // showMsgFunc('Game about to end timer message', 'red');

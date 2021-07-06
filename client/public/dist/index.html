@@ -11,8 +11,92 @@
       crossorigin="anonymous"
     />
     <title>Document</title>
-  <script defer src="main-0d2a2dfec42c44b0ad07.bundle.js"></script></head>
+  <script defer src="main-81915c4650789be0866f.bundle.js"></script></head>
   <body>
+    <section class="sign-in-section">
+      <!-- Button trigger modal -->
+      <button
+        type="button"
+        class="btn btn-primary"
+        data-toggle="modal"
+        data-target="#exampleModal"
+      >
+        Sign in to keep track of scores!
+      </button>
+
+      <!-- Modal -->
+      <div
+        class="modal fade"
+        id="exampleModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                  <label for="username">Username</label>
+                  <input
+                    type="text"
+                    name="user"
+                    class="form-control"
+                    id="username"
+                    aria-describedby="usernameHelp"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="password">Password</label>
+                  <input
+                    type="password"
+                    name="password"
+                    class="form-control"
+                    id="password"
+                  />
+                </div>
+
+                <!-- <button class="btn btn-primary btn-sm" id="newGame-btn">
+                  New Game
+                </button> -->
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Close
+              </button>
+              <button
+                class="btn btn-primary btn-sm"
+                id="sign-in-btn"
+                data-dismiss="modal"
+              >
+                New Game
+              </button>
+              <!-- <button type="button" class="btn btn-primary">
+                Save changes
+              </button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GAME PLAY -->
     <main class="game-page">
       <!-- TIMER -->
       <div class="container">
@@ -32,7 +116,78 @@
         <div class="row">
           <div class="col-sm-2"></div>
           <div class="col-sm-8">
-            <h1>Jumbled Words</h1>
+            <h3>Unscramble this word!</h3>
+            <h4 class="rounds-display"></h4>
+            <label for="guess-word">Unscramble this word</label>
+            <h3 id="guess-word"></h3>
+            <small id="score"></small>
+            <div class="form-group">
+              <input
+                type="text"
+                name="player-input"
+                id="player-input"
+                autocomplete="off"
+              />
+            </div>
+            <!-- <button class="btn btn-sm btn-primary solve-btn">Solve</button> -->
+            <button class="btn btn-primary btn-sm" id="newGame-btn">
+              New Game
+            </button>
+          </div>
+          <div class="col-sm-2"></div>
+        </div>
+      </div>
+    </main>
+
+    <!-- SCORE BOARD -->
+    <section class="home-page mt-1 pt-1">
+      <div class="container-fluid text-center mt-5 pt-3">
+        <div class="row">
+          <div class="col-sm-3"></div>
+          <div class="col-sm-6">
+            <div id="end-game">
+              <h1>Game Over!</h1>
+            </div>
+            <h1>Scramble!</h1>
+            <p>
+              Start game and challenge yourself with how many words you can
+              unscramble!
+            </p>
+            <h3>Score Board</h3>
+            <ul class="list-group mt-2 p-1" id="score-board">
+              <li class="list-group-item">An item</li>
+              <li class="list-group-item">A second item</li>
+              <li class="list-group-item">A third item</li>
+              <li class="list-group-item">A fourth item</li>
+              <li class="list-group-item">And a fifth one</li>
+            </ul>
+          </div>
+          <div class="col-sm-3"></div>
+        </div>
+      </div>
+    </section>
+
+    <!--  Old GAME PLAY -->
+    <!-- <main class="game-page">
+       
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-8"></div>
+          <div class="col-sm-4 d-flex justify-content-end">
+            <span id="show-hour"></span>
+            <span id="show-minute"></span>
+            <span>:</span>
+            <span id="show-seconds"></span>
+          </div>
+        </div>
+      </div>
+
+    
+      <div class="container-fluid mt-4 pt-4 text-center">
+        <div class="row">
+          <div class="col-sm-2"></div>
+          <div class="col-sm-8">
+            <h3>Unscramble this word!</h3>
             <h4 class="rounds-display"></h4>
             <label for="guess-word">Unscramble this word</label>
             <h3 id="guess-word"></h3>
@@ -50,52 +205,7 @@
           <div class="col-sm-2"></div>
         </div>
       </div>
-    </main>
-
-    <section class="home-page mt-5 pt-4">
-      <div class="container-fluid text-center mt-5 pt-3">
-        <div class="row">
-          <div class="col-sm-2"></div>
-          <div class="col-sm-8">
-            <h1>Scramble!</h1>
-            <!-- <div class="form-group">
-              <label for="username">Username</label>
-              <input
-                type="text"
-                name="user"
-                id="username"
-                placeholder="Username"
-              />
-              <button id="newGame-btn">New game</button>
-            </div> -->
-            <form>
-              <div class="form-group">
-                <label for="username">Username</label>
-                <input
-                  type="text"
-                  name="user"
-                  class="form-control"
-                  id="username"
-                  aria-describedby="usernameHelp"
-                />
-              </div>
-              <div class="form-group">
-                <label for="password">Password</label>
-                <input
-                  type="password"
-                  name="password"
-                  class="form-control"
-                  id="password"
-                />
-              </div>
-
-              <button class="btn btn-primary" id="newGame-btn">New Game</button>
-            </form>
-          </div>
-          <div class="col-sm-2"></div>
-        </div>
-      </div>
-    </section>
+    </main> -->
 
     <script
       src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

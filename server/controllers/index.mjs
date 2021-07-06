@@ -34,12 +34,14 @@ const initControllers = () => {
           name: userName,
           password: hashedPassword,
         });
+        console.log('returnung new user -> ', dataValues.name);
         res.json(dataValues.name);
         res.end();
         return;
       }
-
-      res.json(existingUser);
+      console.log('Returnbung existing user --> ', existingUser[0].dataValues.name);
+      const userToReturn = existingUser[0].dataValues.name;
+      res.json(userToReturn);
     } catch (error) {
       console.log('CONTROLLER setNewPlayer ERROR --> ', error);
     }

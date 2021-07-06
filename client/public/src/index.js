@@ -49,23 +49,43 @@ import Timer from './modules/timer';
 let CurrentPlayer;
 let CurrentGame;
 
-//                ********************** GAME STARTS HERE ***********************
+/* ******************** GAME STARTS HERE ********************* */
+
+// Creating new player for DB
+selectors.signIn.addEventListener('click', async (e) => {
+  selectors.newGameBtn.style.display = 'none';
+  selectors.homePage.style.display = 'none';
+  // Player info
+  const userName = selectors.username.value;
+  const password = selectors.password.value;
+  CurrentPlayer = new Player(await setNewPlayer(userName, password));
+
+  CurrentGame = new Game();
+  CurrentGame.fullWord = await getWords();
+  selectors.wordToGuess.innerText = CurrentGame.fullWord[CurrentGame.rounds];
+  Timer(selectors.showMinute, selectors.showSeconds, selectors);
+});
+
 // Event handler for creating a new game
 selectors.newGameBtn.addEventListener('click', async (e) => {
   e.preventDefault();
 
-  // Player info
-  const userName = selectors.username.value;
-  const password = selectors.password.value;
+  // // Player info
+  // const userName = selectors.username.value;
+  // const password = selectors.password.value;
 
   // Make game page visible
-  selectors.gamePage.style.display = 'block';
+  // selectors.gamePage.style.display = 'block';
+  selectors.newGameBtn.style.display = 'none';
   selectors.homePage.style.display = 'none';
   // setNewPlayer();
   console.log('click');
   // creates a new player object
-  // CurrentPlayer = new Player(selectors.username.value);
-  CurrentPlayer = new Player(await setNewPlayer(userName, password));
+  // CurrentPlayer = new Player(await setNewPlayer(userName, password));
+  if (!CurrentPlayer) {
+    CurrentPlayer = new Player('Guest');
+  }
+
   CurrentGame = new Game();
   CurrentGame.fullWord = await getWords();
   selectors.wordToGuess.innerText = CurrentGame.fullWord[CurrentGame.rounds];

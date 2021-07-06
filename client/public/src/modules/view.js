@@ -16,7 +16,8 @@ const selectors = {
   showHour: document.getElementById('show-hour'),
   showMinute: document.getElementById('show-minute'),
   showSeconds: document.getElementById('show-seconds'),
-
+  signIn: document.getElementById('sign-in-btn'),
+  endGame: document.getElementById('end-game'),
 };
 
 // let player;
