@@ -60,7 +60,7 @@ const initControllers = () => {
       playerId: id,
       gameScore: score,
     });
-    return done;
+    res.json(done);
   };
 
   const getScores = async (req, res) => {
