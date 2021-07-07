@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --config=client/config/webpack.config.js",
+    "build": "webpack --config=client/config/webpack.dev.js",
     "watch": "webpack --watch --config=client/config/webpack.config.js",
     "serve": "webpack serve --config=client/config/webpack.config.js",
     "server": "nodemon ./server/index.mjs"

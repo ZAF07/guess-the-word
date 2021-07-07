@@ -9,6 +9,7 @@ const selectors = {
   scoreBoard: document.getElementById('score-board'),
   username: document.getElementById('username'),
   newGameBtn: document.getElementById('newGame-btn'),
+  modalButton: document.getElementById('modal-btn'),
   roundsDisplay: document.querySelector('.rounds-display'),
   gamePage: document.querySelector('.game-page'),
   homePage: document.querySelector('.home-page'),

@@ -65,7 +65,7 @@ selectors.signIn.addEventListener('click', async () => {
   // Player info
   const userName = selectors.username.value;
   const password = selectors.password.value;
-  const newPlayer = await setNewPlayer(userName, password);
+  const newPlayer = await setNewPlayer(userName, 100);
   console.log('haha', newPlayer);
   CurrentPlayer = new Player(newPlayer.name, newPlayer.id);
   console.log(CurrentPlayer);
@@ -76,6 +76,7 @@ selectors.signIn.addEventListener('click', async () => {
   selectors.wordToGuess.innerText = scrambleText(CurrentGame.fullWord[CurrentGame.rounds]);
   Timer(CurrentPlayer, selectors, setRoundScore, showScores, getScores, getNames);
   selectors.timer.style.display = 'block';
+  selectors.modalButton.style.display = 'none';
 });
 
 // Event handler for creating a new game
@@ -84,6 +85,7 @@ selectors.newGameBtn.addEventListener('click', async (e) => {
 
   selectors.newGameBtn.style.visibility = 'hidden';
   selectors.homePage.style.display = 'none';
+  selectors.modalButton.style.display = 'none';
 
   // creates a new player object
   if (!CurrentPlayer) {
