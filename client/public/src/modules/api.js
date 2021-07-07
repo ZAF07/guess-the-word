@@ -5,7 +5,7 @@ import axios from 'axios';
 const getWords = async () => {
   let words;
   try {
-    const { data } = await axios.get('http://localhost:3000/words');
+    const { data } = await axios.get('/words');
     words = data;
   } catch (error) {
     console.log('error from API', error);
