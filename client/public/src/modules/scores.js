@@ -1,4 +1,6 @@
-const showScores = async (selectors, getScores, getNames) => {
+import { getNames, getScores } from './api';
+
+const showScores = async (selectors) => {
   const scores = await getScores();
   const names = await getNames();
   // console.log(scores);
