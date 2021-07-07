@@ -13,7 +13,11 @@ const config = allConfig[env];
 
 const db = {};
 
-const sequelize = new Sequelize(config.database, config.username, config.password, config);
+// const sequelize = new Sequelize(config.database, config.username, config.password, config);
+const sequelize = new Sequelize(process.env.DATABASE_URL, {
+  dialect: 'postgres',
+  protocol: 'postgres',
+});
 
 // add your model definitions to db here
 db.User = userModel(sequelize, Sequelize.DataTypes);
