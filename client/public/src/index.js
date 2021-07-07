@@ -46,6 +46,7 @@ import selectors from './modules/view';
 import { getWords, setNewPlayer } from './modules/api';
 import { Game, Player } from './modules/class';
 import scrambleText from './modules/scramble';
+import guessMsg from './modules/correctScoreMsg';
 import Timer from './modules/timer';
 
 let CurrentPlayer;
@@ -100,21 +101,26 @@ selectors.playerInput.addEventListener('keyup', (event) => {
   if (event.keyCode === 13) {
     // If player word matches word to guess
     if (selectors.playerInput.value === CurrentGame.fullWord[CurrentGame.rounds]) {
+      // Add score to player class based on number of streak
+
+      if (CurrentGame.correctGuessInRow === 3) {
+        selectors.correctGuessThree.style.display = 'block';
+        guessMsg('correct-three', selectors);
+        CurrentGame.correctGuessInRow = 0;
+        CurrentPlayer.setThreeCorrectGuesses();
+      } else {
+        CurrentPlayer.setCorrectGuess();
+        selectors.correctGuessOne.style.display = 'block';
+        guessMsg('correct-one', selectors);
+      }
+
+      //  Send correct guess msg
+
       // this.gameScore ++
       // Reset loosing streak
       CurrentGame.wrongGuessInRow = 0;
       // Add to wining streak
       CurrentGame.correctGuessInRow += 1;
-
-      // Add score to player class based on number of streak
-      // CurrentGame.correctGuessInRow % 3 === 0 ? CurrentPlayer.setThreeCorrectGuesses() : CurrentPlayer.setCorrectGuess();
-
-      if (CurrentGame.correctGuessInRow === 3) {
-        CurrentGame.correctGuessInRow = 0;
-        CurrentPlayer.setThreeCorrectGuesses();
-      } else {
-        CurrentPlayer.setCorrectGuess();
-      }
 
       // Update player score on screen
       selectors.score.innerText = CurrentPlayer.score;
@@ -138,8 +144,12 @@ selectors.playerInput.addEventListener('keyup', (event) => {
     if (CurrentGame.wrongGuessInRow === 3) {
       CurrentGame.wrongGuessInRow = 0;
       CurrentPlayer.setThreeWrongGuesses();
+      selectors.wrongGuessThree.style.display = 'block';
+      guessMsg('wrong-three', selectors);
     } else {
       CurrentPlayer.setWrongGuess();
+      selectors.wrongGuessOne.style.display = 'block';
+      guessMsg('wrong-one', selectors);
     }
 
     selectors.playerInput.value = '';

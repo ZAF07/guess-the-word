@@ -6,9 +6,15 @@
 
 #end-game,
 #reset,
-#timer {
+#timer,
+#correct-one,
+#correct-three,
+#wrong-one,
+#wrong-three {
   display: none;
 }
+
+
 
 input {
   border-top-style: hidden;

@@ -21,6 +21,10 @@ const selectors = {
   gameSubHeader: document.getElementById('game-subheader'),
   reset: document.getElementById('reset'),
   timer: document.getElementById('timer'),
+  correctGuessOne: document.getElementById('correct-one'),
+  correctGuessThree: document.getElementById('correct-three'),
+  wrongGuessOne: document.getElementById('wrong-one'),
+  wrongGuessThree: document.getElementById('wrong-three'),
 };
 
 // let player;

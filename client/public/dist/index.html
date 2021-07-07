@@ -11,7 +11,7 @@
       crossorigin="anonymous"
     />
     <title>Document</title>
-  <script defer src="main-125e77294a60d94a85df.bundle.js"></script></head>
+  <script defer src="main-88bfed69fd8de876791f.bundle.js"></script></head>
   <body>
     <section class="sign-in-section">
       <!-- Button trigger modal -->
@@ -129,6 +129,25 @@
                 autocomplete="off"
               />
             </div>
+
+            <!-- ALERTS FOR CORRECT GUESSES -->
+            <div class="alert alert-success" id="correct-one" role="alert">
+              That's Correct!
+            </div>
+            <div class="alert alert-success" id="correct-three" role="alert">
+              3 Points! Wahoo!
+            </div>
+
+            <!-- ALERT FOR WRONG GUESSES -->
+            <div class="alert alert-danger" id="wrong-one" role="alert">
+              Oops, that's 1 point gone!
+            </div>
+            <div class="alert alert-danger" id="wrong-three" role="alert">
+              Incorrect <br>
+              Wow, you lost 3 points!!
+            </div>
+
+            
             <!-- <button class="btn btn-sm btn-primary solve-btn">Solve</button> -->
             <button class="btn btn-primary btn-sm" id="newGame-btn">
               New Game
