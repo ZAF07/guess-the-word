@@ -7,17 +7,17 @@ import gameModel from './Game.mjs';
 
 const { Sequelize } = sequelizePackage;
 // const env = process.env.NODE_ENV || 'development';
-const env = process.env.NODE_ENV || 'production';
+const env = 'production';
 
 const config = allConfig[env];
 
 const db = {};
 
-// const sequelize = new Sequelize(config.database, config.username, config.password, config);
-const sequelize = new Sequelize(process.env.DATABASE_URL, {
-  dialect: 'postgres',
-  protocol: 'postgres',
-});
+const sequelize = new Sequelize(config.database, config.username, config.password, config);
+// const sequelize = new Sequelize(process.env.DATABASE_URL, {
+//   dialect: 'postgres',
+//   protocol: 'postgres',
+// });
 
 // add your model definitions to db here
 db.User = userModel(sequelize, Sequelize.DataTypes);
