@@ -17,7 +17,8 @@ module.exports = {
     use_env_variable: 'DATABASE_URL',
     dialect: 'postgres',
     database: 'd8r60uah86jmrc',
-    username: 'ufmkahwjukklgd',
+    username: 'zaffere',
+    host: 'localhost',
     password: null,
 
   },
