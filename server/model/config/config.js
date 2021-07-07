@@ -16,7 +16,7 @@ module.exports = {
   production: {
     use_env_variable: 'DATABASE_URL',
     dialect: 'postgres',
-    database: 'jumble_words',
+    database: 'd8r60uah86jmrc',
     username: 'zaffere',
     password: null,
 
