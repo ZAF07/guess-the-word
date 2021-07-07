@@ -69,6 +69,7 @@ selectors.signIn.addEventListener('click', async () => {
   console.log('haha', newPlayer);
   CurrentPlayer = new Player(newPlayer.name, newPlayer.id);
   console.log(CurrentPlayer);
+  selectors.userNameDisplay.innerText = `Playing as ${CurrentPlayer.player}`;
 
   CurrentGame = new Game();
   CurrentGame.fullWord = await getWords();
@@ -90,6 +91,8 @@ selectors.newGameBtn.addEventListener('click', async (e) => {
   // creates a new player object
   if (!CurrentPlayer) {
     CurrentPlayer = new Player('Guest');
+    selectors.userNameDisplay.innerText = `Playing as ${CurrentPlayer.player}`;
+  } else {
     selectors.userNameDisplay.innerText = `Playing as ${CurrentPlayer.player}`;
   }
 
