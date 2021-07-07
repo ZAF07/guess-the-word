@@ -18,7 +18,7 @@ module.exports = {
     dialect: 'postgres',
     database: 'd8r60uah86jmrc',
     username: 'zaffere',
-    host: 'localhost',
+    host: 'ec2-54-227-246-76.compute-1.amazonaws.com:5432',
     password: null,
 
   },
