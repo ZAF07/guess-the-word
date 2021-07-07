@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 /* eslint-disable no-param-reassign */
-const startTimer = (currentPlayer, selectors) => {
+const startTimer = (currentPlayer, selectors, setRoundScore, showScores, getScores, getNames) => {
   let minute = 1;
   let second = 0;
   const toStartTimer = setInterval(() => {
@@ -23,7 +23,13 @@ const startTimer = (currentPlayer, selectors) => {
       selectors.score.innerText = '';
       selectors.wordToGuess.innerText = '';
       selectors.playerInput.value = '';
+      setRoundScore(currentPlayer);
       currentPlayer.score = 0;
+      if (currentPlayer.player !== 'Guest') {
+        showScores(selectors, getScores, getNames);
+      }
+
+      console.log('from timer --> ', currentPlayer);
 
       // hours += 1;
       // minutes = 0;

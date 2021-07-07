@@ -6,9 +6,10 @@
 // import getWords from './api';
 
 export class Player {
-  constructor(player) {
+  constructor(player, id) {
     this.player = player;
     this.score = 0;
+    this.id = id;
   }
 
   setCorrectGuess() {

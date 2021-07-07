@@ -6,6 +6,7 @@ const selectors = {
   playerInput: document.getElementById('player-input'),
   solveButton: document.querySelector('.solve-btn'),
   score: document.getElementById('score'),
+  scoreBoard: document.getElementById('score-board'),
   username: document.getElementById('username'),
   newGameBtn: document.getElementById('newGame-btn'),
   roundsDisplay: document.querySelector('.rounds-display'),

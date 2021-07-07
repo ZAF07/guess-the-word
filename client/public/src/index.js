@@ -43,11 +43,14 @@ Check loose 3 in row -> minus 3 points
 */
 import './recources/styles/styles.css';
 import selectors from './modules/view';
-import { getWords, setNewPlayer } from './modules/api';
+import {
+  getWords, setNewPlayer, setRoundScore, getScores, getNames,
+} from './modules/api';
 import { Game, Player } from './modules/class';
 import scrambleText from './modules/scramble';
 import guessMsg from './modules/correctScoreMsg';
 import Timer from './modules/timer';
+import showScores from './modules/scores';
 
 let CurrentPlayer;
 let CurrentGame;
@@ -55,21 +58,23 @@ let CurrentGame;
 /* ******************** GAME STARTS HERE ********************* */
 
 // Creating new player for DB
-selectors.signIn.addEventListener('click', async (e) => {
+selectors.signIn.addEventListener('click', async () => {
   selectors.newGameBtn.style.visibility = 'hidden';
   selectors.homePage.style.display = 'none';
 
   // Player info
   const userName = selectors.username.value;
   const password = selectors.password.value;
-
-  CurrentPlayer = new Player(await setNewPlayer(userName, password));
+  const newPlayer = await setNewPlayer(userName, password);
+  console.log('haha', newPlayer);
+  CurrentPlayer = new Player(newPlayer.name, newPlayer.id);
+  console.log(CurrentPlayer);
 
   CurrentGame = new Game();
   CurrentGame.fullWord = await getWords();
   //  SCRAMBLE GOES HERE
   selectors.wordToGuess.innerText = scrambleText(CurrentGame.fullWord[CurrentGame.rounds]);
-  Timer(CurrentPlayer, selectors);
+  Timer(CurrentPlayer, selectors, setRoundScore, showScores, getScores, getNames);
   selectors.timer.style.display = 'block';
 });
 
@@ -89,7 +94,7 @@ selectors.newGameBtn.addEventListener('click', async (e) => {
   CurrentGame = new Game();
   CurrentGame.fullWord = await getWords();
   selectors.wordToGuess.innerText = scrambleText(CurrentGame.fullWord[CurrentGame.rounds]);
-  Timer(CurrentPlayer, selectors);
+  Timer(CurrentPlayer, selectors, setRoundScore, showScores, getScores, getNames);
   selectors.timer.style.display = 'block';
 });
 
@@ -163,3 +168,6 @@ selectors.reset.addEventListener('click', () => {
   selectors.endGame.style.display = 'none';
   selectors.reset.style.display = 'none';
 });
+
+showScores(selectors, getScores, getNames);
+getNames();
