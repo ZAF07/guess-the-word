@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 const scramble = (a) => {
   a = a.split('');
 
@@ -15,7 +16,6 @@ const scrambleText = (line) => {
   for (let i = 0; i < lines.length; i += 1) {
     lines[i] = scramble(lines[i]).toUpperCase().split('').join(' ');
   }
-  console.log(lines.join('\n'));
   return lines.join('');
 };
 

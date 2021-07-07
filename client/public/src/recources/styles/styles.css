@@ -1,7 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  color: #fff;
+}
+
+body {
+  font-family: 'Gloria Hallelujah', cursive;
+  background-color: black;
+  color: #fff;
+  font-size: 18px;
 }
 
 #end-game,
@@ -14,14 +24,24 @@
   display: none;
 }
 
+.list-group-item {
+  color: #000;
+}
 
+#newGame-btn,
+#sign-in-btn,
+#reset,
+#modal-btn {
+  background: rgb(223, 182, 182);
+  color: #fff;
+}
 
 input {
   border-top-style: hidden;
   border-right-style: hidden;
   border-left-style: hidden;
   border-bottom-style: groove;
-  background-color: #fff;
+  background-color: #000;
 }
 input:focus {
   outline: none;

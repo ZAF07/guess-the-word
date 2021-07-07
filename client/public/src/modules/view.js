@@ -25,6 +25,7 @@ const selectors = {
   correctGuessThree: document.getElementById('correct-three'),
   wrongGuessOne: document.getElementById('wrong-one'),
   wrongGuessThree: document.getElementById('wrong-three'),
+  userNameDisplay: document.getElementById('username-display'),
 };
 
 // let player;

@@ -80,12 +80,10 @@ selectors.newGameBtn.addEventListener('click', async (e) => {
   selectors.newGameBtn.style.visibility = 'hidden';
   selectors.homePage.style.display = 'none';
 
-  // setNewPlayer();
-  console.log('click');
   // creates a new player object
-  // CurrentPlayer = new Player(await setNewPlayer(userName, password));
   if (!CurrentPlayer) {
     CurrentPlayer = new Player('Guest');
+    selectors.userNameDisplay.innerText = `Playing as ${CurrentPlayer.player}`;
   }
 
   CurrentGame = new Game();
