@@ -20,6 +20,10 @@ module.exports = {
     username: 'zaffere',
     host: 'ec2-54-227-246-76.compute-1.amazonaws.com',
     password: null,
+    ssl: true,
+    dialectOptions: {
+      ssl: { require: true },
+    },
 
   },
 };
