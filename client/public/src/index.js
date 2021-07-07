@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 /* eslint-disable no-unused-expressions */
 /* eslint-disable max-len */
 /* eslint-disable no-alert */
@@ -44,6 +45,7 @@ import './recources/styles/styles.css';
 import selectors from './modules/view';
 import { getWords, setNewPlayer } from './modules/api';
 import { Game, Player } from './modules/class';
+import scrambleText from './modules/scramble';
 import Timer from './modules/timer';
 
 let CurrentPlayer;
@@ -55,15 +57,18 @@ let CurrentGame;
 selectors.signIn.addEventListener('click', async (e) => {
   selectors.newGameBtn.style.visibility = 'hidden';
   selectors.homePage.style.display = 'none';
+
   // Player info
   const userName = selectors.username.value;
   const password = selectors.password.value;
+
   CurrentPlayer = new Player(await setNewPlayer(userName, password));
 
   CurrentGame = new Game();
   CurrentGame.fullWord = await getWords();
-  selectors.wordToGuess.innerText = CurrentGame.fullWord[CurrentGame.rounds];
-  Timer(selectors.showMinute, selectors.showSeconds, selectors);
+  //  SCRAMBLE GOES HERE
+  selectors.wordToGuess.innerText = scrambleText(CurrentGame.fullWord[CurrentGame.rounds]);
+  Timer(CurrentPlayer, selectors);
   selectors.timer.style.display = 'block';
 });
 
@@ -73,6 +78,7 @@ selectors.newGameBtn.addEventListener('click', async (e) => {
 
   selectors.newGameBtn.style.visibility = 'hidden';
   selectors.homePage.style.display = 'none';
+
   // setNewPlayer();
   console.log('click');
   // creates a new player object
@@ -83,8 +89,8 @@ selectors.newGameBtn.addEventListener('click', async (e) => {
 
   CurrentGame = new Game();
   CurrentGame.fullWord = await getWords();
-  selectors.wordToGuess.innerText = CurrentGame.fullWord[CurrentGame.rounds];
-  Timer(selectors.showMinute, selectors.showSeconds, selectors);
+  selectors.wordToGuess.innerText = scrambleText(CurrentGame.fullWord[CurrentGame.rounds]);
+  Timer(CurrentPlayer, selectors);
   selectors.timer.style.display = 'block';
 });
 
@@ -104,6 +110,7 @@ selectors.playerInput.addEventListener('keyup', (event) => {
       // CurrentGame.correctGuessInRow % 3 === 0 ? CurrentPlayer.setThreeCorrectGuesses() : CurrentPlayer.setCorrectGuess();
 
       if (CurrentGame.correctGuessInRow === 3) {
+        CurrentGame.correctGuessInRow = 0;
         CurrentPlayer.setThreeCorrectGuesses();
       } else {
         CurrentPlayer.setCorrectGuess();
@@ -116,7 +123,7 @@ selectors.playerInput.addEventListener('keyup', (event) => {
       // (also being used as index to iterate through fullWord array to display word)
       CurrentGame.updateRounds();
       // Update the word to guess displayed on screen
-      selectors.wordToGuess.innerText = CurrentGame.fullWord[CurrentGame.rounds];
+      selectors.wordToGuess.innerText = scrambleText(CurrentGame.fullWord[CurrentGame.rounds]);
       selectors.playerInput.value = '';
       return;
     }
@@ -127,8 +134,9 @@ selectors.playerInput.addEventListener('keyup', (event) => {
     CurrentGame.wrongGuessInRow += 1;
 
     // Subtract a point from player score based on number of consecutive misses
-    // CurrentGame.wrongGuessInRow === 3 ? CurrentPlayer.setThreeWrongGuesses() : CurrentPlayer.setWrongGuess();
+
     if (CurrentGame.wrongGuessInRow === 3) {
+      CurrentGame.wrongGuessInRow = 0;
       CurrentPlayer.setThreeWrongGuesses();
     } else {
       CurrentPlayer.setWrongGuess();

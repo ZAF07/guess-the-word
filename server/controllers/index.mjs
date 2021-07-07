@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable import/extensions */
 import { resolve } from 'path';
 import words from '../utils/game.mjs';

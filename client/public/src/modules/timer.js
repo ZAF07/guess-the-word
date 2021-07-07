@@ -1,11 +1,11 @@
 /* eslint-disable no-console */
 /* eslint-disable no-param-reassign */
-const startTimer = (minutes, seconds, selectors) => {
+const startTimer = (currentPlayer, selectors) => {
   let minute = 1;
   let second = 0;
   const toStartTimer = setInterval(() => {
-    minutes.innerText = minute;
-    seconds.innerText = second;
+    selectors.showMinute.innerText = minute;
+    selectors.showSeconds.innerText = second;
 
     if (second === 0 && minute !== 0) {
       minute -= 1;
@@ -22,6 +22,8 @@ const startTimer = (minutes, seconds, selectors) => {
       selectors.timer.style.display = 'none';
       selectors.score.innerText = '';
       selectors.wordToGuess.innerText = '';
+      selectors.playerInput.value = '';
+      currentPlayer.score = 0;
 
       // hours += 1;
       // minutes = 0;
