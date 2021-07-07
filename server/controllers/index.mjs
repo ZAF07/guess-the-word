@@ -49,6 +49,7 @@ const initControllers = () => {
       };
 
       res.json(userToReturn);
+      res.end();
     } catch (error) {
       console.log('CONTROLLER setNewPlayer ERROR --> ', error);
     }
@@ -61,6 +62,7 @@ const initControllers = () => {
       gameScore: score,
     });
     res.json(done);
+    res.end();
   };
 
   const getScores = async (req, res) => {
@@ -82,6 +84,7 @@ const initControllers = () => {
     // console.log(scores);
 
     res.json(scores);
+    res.end();
   };
 
   const getName = async (req, res) => {
@@ -92,6 +95,7 @@ const initControllers = () => {
     });
     console.log('name ---> ', data);
     res.json(data);
+    res.end();
   };
 
   return {
