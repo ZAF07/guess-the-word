@@ -19,7 +19,7 @@ module.exports = {
     database: 'DATABASE_NAME',
     username: 'zaffere',
     host: 'localhost',
-    password: 'null',
+    password: null
 
     dialectOptions: {
       ssl: { rejectUnauthorized: false },
