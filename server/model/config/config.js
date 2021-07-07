@@ -16,8 +16,8 @@ module.exports = {
   production: {
     use_env_variable: 'DATABASE_URL',
     dialect: 'postgres',
-    database: 'DATABASE_NAME',
-    username: 'DATABASE_USERNAME',
+    database: 'd8r60uah86jmrc',
+    username: 'ufmkahwjukklgd',
     host: 'ec2-54-227-246-76.compute-1.amazonaws.com',
     password: 'DATABASE_PASSWORD',
 
