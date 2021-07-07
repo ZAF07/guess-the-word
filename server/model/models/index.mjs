@@ -6,7 +6,8 @@ import userModel from './User.mjs';
 import gameModel from './Game.mjs';
 
 const { Sequelize } = sequelizePackage;
-const env = process.env.NODE_ENV || 'development';
+// const env = process.env.NODE_ENV || 'development';
+const env = process.env.NODE_ENV || 'production';
 
 const config = allConfig[env];
 
