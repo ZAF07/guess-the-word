@@ -1,30 +1,35 @@
 import { getNames, getScores } from './api';
 
 const showScores = async (selectors) => {
-  const scores = await getScores();
-  const names = await getNames();
-  // console.log(scores);
-  // console.log(names);
+  try {
+    const scores = await getScores();
+    const names = await getNames();
 
-  while (selectors.scoreBoard.firstChild) {
-    selectors.scoreBoard.removeChild(selectors.scoreBoard.firstChild);
-  }
+    while (selectors.scoreBoard.firstChild) {
+      selectors.scoreBoard.removeChild(selectors.scoreBoard.firstChild);
+    }
 
-  for (let i = 0; i < scores.length; i += 1) {
-    const currScore = scores[i];
-    const currScoreId = scores[i].playerId;
+    for (let i = 0; i < scores.length; i += 1) {
+      const currScore = scores[i];
+      const currScoreId = scores[i].playerId;
 
-    for (let j = 0; j < names.length; j += 1) {
-      const currName = names[j];
-      const currNameId = names[j].id;
+      for (let j = 0; j < names.length; j += 1) {
+        const currName = names[j];
+        const currNameId = names[j].id;
 
-      if (currScoreId === currNameId) {
-        const li = document.createElement('li');
-        li.classList.add('list-group-item');
-        li.innerText = `${currName.name} ${currScore.gameScore} `;
-        selectors.scoreBoard.appendChild(li);
+        if (currScoreId === currNameId) {
+          const li = document.createElement('li');
+          li.classList.add('list-group-item');
+          li.innerText = `${currName.name} ${currScore.gameScore} `;
+          selectors.scoreBoard.appendChild(li);
+        }
       }
     }
+  } catch (error) {
+    console.log('error in scores.js', error);
   }
+
+  // console.log(scores);
+  // console.log(names);
 };
 export default showScores;
