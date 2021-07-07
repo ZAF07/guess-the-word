@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 /* eslint-disable no-unused-expressions */
 /* eslint-disable no-console */
 /* eslint-disable no-param-reassign */

@@ -64,7 +64,7 @@ selectors.signIn.addEventListener('click', async () => {
 
   // Player info
   const userName = selectors.username.value;
-  const password = selectors.password.value;
+  // const password = selectors.password.value;
   const newPlayer = await setNewPlayer(userName, 100);
   console.log('haha', newPlayer);
   CurrentPlayer = new Player(newPlayer.name, newPlayer.id);

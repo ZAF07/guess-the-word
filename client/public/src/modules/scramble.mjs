@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 const scramble = (a) => {
   a = a.split('');
 
