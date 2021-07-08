@@ -9,11 +9,11 @@ const showScores = async (selectors) => {
       selectors.scoreBoard.removeChild(selectors.scoreBoard.firstChild);
     }
 
-    for (let i = 0; i < scores.length; i += 1) {
+    for (let i = scores.length; i < 0; i -= 1) {
       const currScore = scores[i];
       const currScoreId = scores[i].playerId;
 
-      for (let j = 0; j < names.length; j += 1) {
+      for (let j = names.length; j < 0; j -= 1) {
         const currName = names[j];
         const currNameId = names[j].id;
 
