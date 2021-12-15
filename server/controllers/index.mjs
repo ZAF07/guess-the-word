@@ -4,7 +4,7 @@ import { resolve } from 'path';
 import words from '../utils/game.mjs';
 import * as auth from '../utils/auth.mjs';
 import db from '../model/models/index.mjs';
-
+// test
 const initControllers = () => {
   const game = (req, res) => {
     res.sendFile(resolve('client/dist', 'index.html'));
